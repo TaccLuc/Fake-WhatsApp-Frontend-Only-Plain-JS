@@ -150,6 +150,7 @@
     height: 80px;
     padding: 5px;
     border-top: 1px solid #C6C8CA;
+    cursor: pointer;
 }
 
 .msgImage{

@@ -2,6 +2,7 @@ const{createApp} = Vue;
 createApp({
     data(){
         return{
+            activeUser: 0,
             contacts: [
                 {
                 name: 'Michele',
@@ -168,6 +169,8 @@ createApp({
         }
     },
     methods:{
-
+        changeActiveUser(i){
+            this.activeUser = [i]
+        }
     }
 }).mount('#app')

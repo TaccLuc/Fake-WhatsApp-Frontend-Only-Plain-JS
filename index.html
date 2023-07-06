@@ -77,7 +77,8 @@
 
                     <!-- APP BODY -->
                     <div class="appBody">
-                        <div class="singleMsg" v-for="singleMsg, i in contacts">
+                        <div class="singleMsg" v-for="singleMsg, i in contacts"
+                        @click="changeActiveUser(i)">
                             <div class="d-flex">
                                 <div class="msgImage">
                                     <img :src="singleMsg.avatar" :alt="singleMsg.name">
@@ -104,11 +105,11 @@
                     <!-- MSG HEADER -->
                     <div class="msgHeader d-flex">
                         <div class="userImage me-3">
-                            <img src="img/avatar_io.jpg" alt="User Image">
+                            <img :src="contacts[activeUser].avatar" :alt="contacts[activeUser].name">
                         </div>
                         <div class="flex-grow-1 msgData">
                             <h3>
-                                Nome
+                                {{contacts[activeUser].name}}
                             </h3>
                             <h4>
                                 Ultimo accesso
@@ -130,12 +131,17 @@
                     <!-- MSG BODY -->
                     <div class="msgBody d-flex align-items-center justify-content-center">
                         <div class="msgBox d-flex flex-column">
-                            <div class="msgBubble position-relative">
+                            <div class="msgBubble position-relative"
+                            v-for="singleBubble, i in contacts[activeUser].messages"
+                            :class="{
+                                'sent': contacts[activeUser].messages[i].status == 'sent',
+                                'received': contacts[activeUser].messages[i].status == 'received',
+                            }">
                                 <span class="bubbleText">
-                                    ciao a todos
+                                    {{contacts[activeUser].messages[i].message}}
                                 </span>
                                 <span class="bubbleTime">
-                                    12.00
+                                    {{contacts[activeUser].messages[i].date}}
                                 </span>
                             </div>
                         </div>
