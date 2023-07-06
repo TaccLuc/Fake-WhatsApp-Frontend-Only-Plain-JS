@@ -221,7 +221,7 @@ createApp({
             const myDate = new Date(this.transformDate(this.contacts[j].messages[i].date));
             hour  = myDate.getHours()
             minutes = myDate.getMinutes()
-            return [hour, minutes].toString();
+            return [hour, ':', minutes].toString().replaceAll(',', '');
         },
         getCurrentTime() {
                 const now = new Date();
