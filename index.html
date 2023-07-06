@@ -77,14 +77,14 @@
 
                     <!-- APP BODY -->
                     <div class="appBody">
-                        <div class="singleMsg">
+                        <div class="singleMsg" v-for="singleMsg, i in contacts">
                             <div class="d-flex">
                                 <div class="msgImage">
-                                    <img src="img/avatar_1.jpg" alt="Avatar 1">
+                                    <img :src="singleMsg.avatar" :alt="singleMsg.name">
                                 </div>
                                 <div class="flex-grow-1 msgData">
                                     <h3>
-                                        Nome
+                                        {{singleMsg.name}}
                                     </h3>
                                     <h4>
                                         Ultimo msg
