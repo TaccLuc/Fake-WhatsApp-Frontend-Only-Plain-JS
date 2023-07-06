@@ -1,6 +1,10 @@
 /* 
     BACKGROUND & STRUCTURE
 */
+*{
+    user-select: none;
+}
+
 .bgGreen{
     height: 20%;
     background-color: #009688;
@@ -188,18 +192,59 @@
     border-left: 1px solid #C6C8CA;
 }
 
+/* MSG HEADER */
 .msgHeader{
     height: 70px;
     padding: 5px;
     background-color: #EAEAEA;
 }
 
+/* MSG BODY */
 .msgBody{
     overflow: auto;
     height: calc(100% - 140px);
     background-image: url(../img/mine.jpg);
 }
 
+.msgBox{
+    width: 70%;
+    height: 90%;
+}
+
+.msgBubble{ 
+    background-color: white;
+    width: 230px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.received{
+    background-color: white;
+    align-self: flex-start;
+}
+
+.sent{
+    background-color: #D5F9BA;
+    align-self: flex-end;
+}
+
+.bubbleText{
+    display: inline-block;
+    user-select: text;
+    font-size: 0.9rem;
+    width: 90%;
+}
+
+.bubbleTime{
+    font-size: 0.6rem;
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    color: #97979e;
+}
+
+/* MSG FOOTER */
 .msgFooter{
     height: 70px;
 }
