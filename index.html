@@ -149,6 +149,19 @@
                                 <span class="bubbleTime">
                                     {{getTime(activeUser, i)}}
                                 </span>
+                                <div class="dropdown bubbleDropdown dropdown-center">
+                                    <button class="bubbleButton" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu bubbleDelete">
+                                        <li>
+                                            <a class="dropdown-item"
+                                            @click="deleteMessage(i)">
+                                                Delete Message
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

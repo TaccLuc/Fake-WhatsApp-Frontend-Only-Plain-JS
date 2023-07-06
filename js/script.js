@@ -217,13 +217,13 @@ createApp({
             const outputString = formattedDate + ' ' + parts[1];
             return outputString;
         },
-        getTime(j, i){
+        getTime(j, i) {
             const myDate = new Date(this.transformDate(this.contacts[j].messages[i].date));
             hour  = myDate.getHours()
             minutes = myDate.getMinutes()
             return [hour, minutes].toString();
         },
-        getCurrentTime(){
+        getCurrentTime() {
                 const now = new Date();
                 
                 const day = now.getDate();
@@ -237,6 +237,9 @@ createApp({
                 const formattedTime = day + "/" + month + "/" + year + " " + hours + ":" + minutes + ":" + seconds;
                 
                 return formattedTime;
+        },
+        deleteMessage(i){
+            this.contacts[this.activeUser].messages.splice(i, 1);
         }
     }
 }).mount('#app')
