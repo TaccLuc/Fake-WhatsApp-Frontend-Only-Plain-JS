@@ -1,10 +1,13 @@
-const{createApp} = Vue;
+const { createApp } = Vue;
+
 createApp({
-    data(){
-        return{
+    data() {
+        return {
             activeUser: 0,
             newText: '',
             newSearch: '',
+            hour: NaN,
+            minutes: NaN,
             contacts: [
                 {
                 name: 'Michele',
@@ -167,14 +170,14 @@ createApp({
                 }
                 ],
                 }
-                ]
+                ],
         }
     },
     methods:{
-        changeActiveUser(i){
+        changeActiveUser(i) {
             this.activeUser = [i]
         },
-        sendMessage(){
+        sendMessage() {
                 if (this.newText.trim() != '') {
                     this.contacts[this.activeUser].messages.push({
                         date: '01/01/2020 15.30.55',
@@ -184,12 +187,12 @@ createApp({
                     this.newText = '';
                 }
         },
-        timeout(){
+        timeout() {
             setTimeout(()=>{
                 this.answer()
              },2000);
         },
-        answer(){
+        answer() {
                 this.contacts[this.activeUser].messages.push({
                     date: '01/01/2020 15.30.55',
                     message: 'ok',
@@ -197,7 +200,7 @@ createApp({
                 });
                 this.newText = '';
         },
-        searchContact(){
+        searchContact() {
             for (let i = 0; i < this.contacts.length; i++) {
                 if (!this.contacts[i].name.toLowerCase().includes(this.newSearch.toLowerCase())) {
                     this.contacts[i].visible = false;
@@ -206,7 +209,19 @@ createApp({
                     this.contacts[i].visible = true;
                 }
             }
+        },
+        transformDate(inputString) {
+            const parts = inputString.split(' ');
+            const date = parts[0].split('/');
+            const formattedDate = date[1] + '/' + date[0] + '/' + date[2];
+            const outputString = formattedDate + ' ' + parts[1];
+            return outputString;
+        },
+        getTime(j, i){
+            const myDate = new Date(this.transformDate(this.contacts[j].messages[i].date));
+            hour  = myDate.getHours()
+            minutes = myDate.getMinutes()
+            return [hour, minutes].toString();
         }
-        
     }
 }).mount('#app')
