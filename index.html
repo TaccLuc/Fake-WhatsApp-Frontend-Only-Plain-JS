@@ -80,7 +80,10 @@
                     <div class="appBody">
                         <div v-for="singleContact, i in contacts"
                         @click="changeActiveUser(i)">
-                            <div class="singleMsg" v-if="singleContact.visible">
+                            <div class="singleMsg" v-if="singleContact.visible"
+                            :class="{
+                                'activeUser': activeUser == i
+                            }">
                                 <div class="d-flex">
                                     <div class="msgImage">
                                         <img :src="singleContact.avatar" :alt="singleContact.name">
@@ -90,11 +93,11 @@
                                             {{singleContact.name}}
                                         </h3>
                                         <h4>
-                                            Ultimo msg
+                                            {{contacts[i].messages[contacts[i].messages.length - 1].message}}
                                         </h4>
                                     </div>
                                     <div class="msgTime">
-                                        12.00
+                                        {{getTime(i, contacts[i].messages.length - 1)}}
                                     </div>
                                 </div>
                             </div>

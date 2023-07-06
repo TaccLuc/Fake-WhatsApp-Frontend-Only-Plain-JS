@@ -176,7 +176,6 @@ createApp({
     methods:{
         changeActiveUser(i) {
             this.activeUser = [i]
-            console.log(Date.now().toString())
         },
         sendMessage() {
                 if (this.newText.trim() != '') {
