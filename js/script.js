@@ -176,11 +176,12 @@ createApp({
     methods:{
         changeActiveUser(i) {
             this.activeUser = [i]
+            console.log(Date.now().toString())
         },
         sendMessage() {
                 if (this.newText.trim() != '') {
                     this.contacts[this.activeUser].messages.push({
-                        date: '01/01/2020 15.30.55',
+                        date: this.getCurrentTime(),
                         message: this.newText,
                         status: 'sent'
                     });
@@ -194,7 +195,7 @@ createApp({
         },
         answer() {
                 this.contacts[this.activeUser].messages.push({
-                    date: '01/01/2020 15.30.55',
+                    date: this.getCurrentTime(),
                     message: 'ok',
                     status: 'received'
                 });
@@ -222,6 +223,21 @@ createApp({
             hour  = myDate.getHours()
             minutes = myDate.getMinutes()
             return [hour, minutes].toString();
+        },
+        getCurrentTime(){
+                const now = new Date();
+                
+                const day = now.getDate();
+                const month = now.getMonth() + 1;
+                const year = now.getFullYear();
+                
+                const hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                
+                const formattedTime = day + "/" + month + "/" + year + " " + hours + ":" + minutes + ":" + seconds;
+                
+                return formattedTime;
         }
     }
 }).mount('#app')
