@@ -4,6 +4,7 @@ createApp({
         return{
             activeUser: 0,
             newText: '',
+            newSearch: '',
             contacts: [
                 {
                 name: 'Michele',
@@ -173,7 +174,7 @@ createApp({
         changeActiveUser(i){
             this.activeUser = [i]
         },
-        sendMessage(i){
+        sendMessage(){
                 if (this.newText.trim() != '') {
                     this.contacts[this.activeUser].messages.push({
                         date: '01/01/2020 15.30.55',
@@ -182,7 +183,30 @@ createApp({
                     });
                     this.newText = '';
                 }
+        },
+        timeout(){
+            setTimeout(()=>{
+                this.answer()
+             },2000);
+        },
+        answer(){
+                this.contacts[this.activeUser].messages.push({
+                    date: '01/01/2020 15.30.55',
+                    message: 'ok',
+                    status: 'received'
+                });
+                this.newText = '';
+        },
+        searchContact(){
+            for (let i = 0; i < this.contacts; i++) {
+                if (!this.contacts[i].name.toLowerCase().includes(this.newSearch.toLowerCase())) {
+                    this.contacts[i].visible = false;
+                }
+                else{
+                    this.contacts[i].visible = true;
+                }
             }
+        }
         
     }
 }).mount('#app')

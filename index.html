@@ -70,29 +70,32 @@
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
                             <div class="searchBar">
-                                <input type="text" placeholder="Cerca o inizia una nuova chat">
+                                <input type="text" placeholder="Cerca o inizia una nuova chat"
+                                @keyup="searchContact()" v-model="newSearch">
                             </div>
                         </div>
                     </div>
 
                     <!-- APP BODY -->
                     <div class="appBody">
-                        <div class="singleMsg" v-for="singleMsg, i in contacts"
+                        <div v-for="singleContact, i in contacts"
                         @click="changeActiveUser(i)">
-                            <div class="d-flex">
-                                <div class="msgImage">
-                                    <img :src="singleMsg.avatar" :alt="singleMsg.name">
-                                </div>
-                                <div class="flex-grow-1 msgData">
-                                    <h3>
-                                        {{singleMsg.name}}
-                                    </h3>
-                                    <h4>
-                                        Ultimo msg
-                                    </h4>
-                                </div>
-                                <div class="msgTime">
-                                    12.00
+                            <div class="singleMsg" v-if="singleContact.visible">
+                                <div class="d-flex">
+                                    <div class="msgImage">
+                                        <img :src="singleContact.avatar" :alt="singleContact.name">
+                                    </div>
+                                    <div class="flex-grow-1 msgData">
+                                        <h3>
+                                            {{singleContact.name}}
+                                        </h3>
+                                        <h4>
+                                            Ultimo msg
+                                        </h4>
+                                    </div>
+                                    <div class="msgTime">
+                                        12.00
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -137,9 +140,9 @@
                                 'sent': contacts[activeUser].messages[i].status == 'sent',
                                 'received': contacts[activeUser].messages[i].status == 'received',
                             }">
-                                <span class="bubbleText">
+                                <div class="bubbleText">
                                     {{contacts[activeUser].messages[i].message}}
-                                </span>
+                                </div>
                                 <span class="bubbleTime">
                                     {{contacts[activeUser].messages[i].date}}
                                 </span>
@@ -154,7 +157,7 @@
                                 <i class="fa-regular fa-face-smile"></i>
                             </div>
                             <div class="searchBar"
-                            @keyup.enter="sendMessage(i)">
+                            @keyup.enter="sendMessage(); timeout()">
                                 <input type="text" placeholder="Scrivi un messaggio" v-model="newText">
                             </div>
                             <div class="footerIcon">

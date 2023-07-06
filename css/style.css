@@ -191,6 +191,7 @@
 
 .leftBorder{
     border-left: 1px solid #C6C8CA;
+    height: 100%;
 }
 
 /* MSG HEADER */
@@ -218,6 +219,7 @@
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+    word-wrap: break-word
 }
 
 .received{
