@@ -29,8 +29,10 @@
 /* 
     APP SECTION
 */
+
+/*  APP HEADER */
 .appHeader{
-    height: 250px;
+    height: 220px;
 }
 
 .appBody{
@@ -73,19 +75,19 @@
 
 .appNotify{
     background-color: #8EDAFC;
-    height: 130px;
+    height: 100px;
     padding: 0 10px;
 }
 
 .notifyIcon{
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     overflow: hidden;
     color:#8EDAFC;
     background-color: white;
     text-align: center;
-    line-height: 60px;
+    line-height: 50px;
     font-size: 1.8rem;
     margin-right: 10px;
 }
@@ -138,6 +140,45 @@
     outline: none;
 }
 
+/* APP BODY */
+
+.singleMsg{
+    height: 80px;
+    padding: 5px;
+    border-top: 1px solid #C6C8CA;
+}
+
+.msgImage{
+    overflow: hidden;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    margin-right: 10px;
+}
+
+.msgImage>img{
+    width: 100%;
+}
+
+.msgData{
+    margin-top: 5px;
+}
+.msgData>h3{
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.msgData>h4{
+    font-size: 0.7rem;
+    margin: 0;
+    color: #C6C8CA;
+}
+
+.msgTime{
+    color: #C6C8CA;
+    padding-right: 10px;
+    font-size: 0.9rem;
+}
 /* 
     MSG SECTION
 */
