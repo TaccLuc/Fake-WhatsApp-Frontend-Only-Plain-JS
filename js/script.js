@@ -3,6 +3,7 @@ createApp({
     data(){
         return{
             activeUser: 0,
+            newText: '',
             contacts: [
                 {
                 name: 'Michele',
@@ -171,6 +172,17 @@ createApp({
     methods:{
         changeActiveUser(i){
             this.activeUser = [i]
-        }
+        },
+        sendMessage(i){
+                if (this.newText.trim() != '') {
+                    this.contacts[this.activeUser].messages.push({
+                        date: '01/01/2020 15.30.55',
+                        message: this.newText,
+                        status: 'sent'
+                    });
+                    this.newText = '';
+                }
+            }
+        
     }
 }).mount('#app')

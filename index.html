@@ -153,8 +153,9 @@
                             <div class="footerIcon">
                                 <i class="fa-regular fa-face-smile"></i>
                             </div>
-                            <div class="searchBar">
-                                <input type="text" placeholder="Scrivi un messaggio">
+                            <div class="searchBar"
+                            @keyup.enter="sendMessage(i)">
+                                <input type="text" placeholder="Scrivi un messaggio" v-model="newText">
                             </div>
                             <div class="footerIcon">
                                 <i class="fa-solid fa-microphone"></i>
