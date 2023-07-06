@@ -1,0 +1,65 @@
+/* 
+    BACKGROUND & STRUCTURE
+*/
+.bgGreen{
+    height: 20%;
+    background-color: #009688;
+}
+.bgGray{
+    height: 80%;
+    background-color: #DADBD3;
+}
+
+.windowContainer{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 95%;
+    width: 70%;
+    background-color: white;
+}
+
+.windowContainer>div{
+    padding: 0;
+}
+
+/* 
+    APP SECTION
+*/
+.appHeader{
+    height: 25%;
+    background-color: beige;
+}
+
+.appBody{
+    height: 75%;
+    overflow: auto;
+}
+
+.appUser{
+    height: 60px;
+    background-color: red;
+}
+
+/* 
+    MSG SECTION
+*/
+
+.msgHeader{
+    height: 60px;
+    background-color: blue;
+}
+
+.msgBody{
+    overflow: auto;
+    height: calc(100% - 130px);
+    background-image: url(../img/mine.jpg);
+}
+
+.msgFooter{
+    height: 70px;
+    background-color: aquamarine;
+}
