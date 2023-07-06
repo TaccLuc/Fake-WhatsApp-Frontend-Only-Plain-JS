@@ -169,9 +169,9 @@
 }
 
 .msgData>h4{
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     margin: 0;
-    color: #C6C8CA;
+    color: #727274;
 }
 
 .msgTime{
@@ -179,22 +179,44 @@
     padding-right: 10px;
     font-size: 0.9rem;
 }
+
 /* 
     MSG SECTION
 */
 
+.leftBorder{
+    border-left: 1px solid #C6C8CA;
+}
+
 .msgHeader{
     height: 70px;
-    background-color: blue;
+    padding: 5px;
+    background-color: #EAEAEA;
 }
 
 .msgBody{
     overflow: auto;
-    height: calc(100% - 120px);
+    height: calc(100% - 140px);
     background-image: url(../img/mine.jpg);
 }
 
 .msgFooter{
+    height: 70px;
+}
+
+.footerIcon{
+    padding: 20px;
+    font-size: 1.5rem;
+}
+
+.msgFooter>.appSearch{
+    background-color: #F3EEEA;
+    height: 100%;
+}
+
+.msgFooter>.appSearch input{
     height: 50px;
-    background-color: aquamarine;
+    border-radius: 15px;
+    border: 0px;
+    color: black;
 }
