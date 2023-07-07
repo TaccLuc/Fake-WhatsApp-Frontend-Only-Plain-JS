@@ -5,22 +5,13 @@
     user-select: none;
 }
 
-.bgGreen{
-    height: 20%;
-    background-color: #009688;
-}
-.bgGray{
-    height: 80%;
-    background-color: #DADBD3;
+.bgGreenGray{
+    height: 100vh;
+    background: rgb(0,150,136);
+    background: linear-gradient(180deg, rgba(0,150,136,1) 20%, rgba(218,219,211,1) 20%);
 }
 
 .windowContainer{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
     height: 95%;
     width: 70%;
     background-color: white;
@@ -120,7 +111,6 @@
 
 .searchIcon{
     font-size: 1rem;
-    padding-right: 10px;
     width: 50px;
     background-color: white;
     text-align: center;
@@ -154,6 +144,7 @@
     padding: 5px;
     border-top: 1px solid #C6C8CA;
     cursor: pointer;
+    overflow:hidden;
 }
 
 .msgImage{

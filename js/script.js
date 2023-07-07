@@ -6,6 +6,7 @@ createApp({
             activeUser: 0,
             newText: '',
             newSearch: '',
+            newResponse: '',
             hour: NaN,
             minutes: NaN,
             contacts: [
@@ -111,7 +112,7 @@ createApp({
                 },
                 {
                 name: 'Claudia',
-                avatar: './img/avatar_5.jpg',
+                avatar: './img/avatar_6.jpg',
                 visible: true,
                 messages: [
                 {
@@ -173,6 +174,9 @@ createApp({
                 ],
         }
     },
+    created(){
+        this.generateBeerFacts()
+    },
     methods:{
         changeActiveUser(i) {
             this.activeUser = [i]
@@ -193,12 +197,13 @@ createApp({
              },2000);
         },
         answer() {
-                this.contacts[this.activeUser].messages.push({
-                    date: this.getCurrentTime(),
-                    message: 'ok',
-                    status: 'received'
-                });
-                this.newText = '';
+            this.generateBeerFacts()
+            this.contacts[this.activeUser].messages.push({
+                date: this.getCurrentTime(),
+                message: this.newResponse,
+                status: 'received'
+            });
+            this.newText = '';
         },
         searchContact() {
             for (let i = 0; i < this.contacts.length; i++) {
@@ -240,6 +245,12 @@ createApp({
         },
         deleteMessage(i){
             this.contacts[this.activeUser].messages.splice(i, 1);
+        },
+        generateBeerFacts(){
+            axios.get("https://random-data-api.com/api/v2/beers").then((response) => {
+            const beer = response.data
+            this.newResponse = beer.brand + ' it\'s a ' + beer.style + ' and it uses ' + beer.malts + ' malts'
+            })
         }
     }
 }).mount('#app')
