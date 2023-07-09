@@ -90,11 +90,11 @@
                                         <h3>
                                             {{singleContact.name}}
                                         </h3>
-                                        <h4>
+                                        <h4   v-if="contacts[i].messages.length != 0">
                                             {{contacts[i].messages[contacts[i].messages.length - 1].message}}
                                         </h4>
                                     </div>
-                                    <div class="msgTime">
+                                    <div class="msgTime"  v-if="contacts[i].messages.length != 0">
                                         {{getTime(i, contacts[i].messages.length - 1)}}
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                             <h3>
                                 {{contacts[activeUser].name}}
                             </h3>
-                            <h4>
+                            <h4 v-if="contacts[activeUser].messages.length != 0">
                                 Ultimo accesso {{getTime(activeUser, contacts[activeUser].messages.length - 1)}}
                             </h4>
                         </div>
