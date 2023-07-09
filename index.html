@@ -102,9 +102,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="notification" v-if="unreadMessage && i == receivingUser">
+                            <div class="notification" v-if="!contacts[i].messages[contacts[i].messages.length - 1].read">
                                 <div>
-                                    {{newMessages}}
+                                    1
                                 </div>
                             </div>
                         </div>
