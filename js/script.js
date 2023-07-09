@@ -205,7 +205,6 @@ createApp({
                     status: 'received'
                 });
                 this.newText = '';
-                console.log(this.contacts[this.receivingUser])
                 })     
         },
         searchContact() {
@@ -227,9 +226,13 @@ createApp({
         },
         getTime(j, i) {
             const myDate = new Date(this.transformDate(this.contacts[j].messages[i].date));
-            hour  = myDate.getHours()
-            minutes = myDate.getMinutes()
-            return [hour, ':', minutes].toString().replaceAll(',', '');
+            hour  = myDate.getHours().toString()
+            minutes = myDate.getMinutes().toString()
+            if (minutes.length == 1) {
+                return [hour, ':0', minutes].toString().replaceAll(',', '');
+            } else {
+                return [hour, ':', minutes].toString().replaceAll(',', '');
+            }
         },
         getCurrentTime() {
                 const now = new Date();
