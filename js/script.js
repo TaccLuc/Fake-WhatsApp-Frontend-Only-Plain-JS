@@ -7,6 +7,7 @@ createApp({
             newText: '',
             newSearch: '',
             newResponse: '',
+            receivingUser: '',
             hour: NaN,
             minutes: NaN,
             contacts: [
@@ -176,16 +177,17 @@ createApp({
     },
     methods:{
         changeActiveUser(i) {
-            this.activeUser = [i]
+            this.activeUser = i;
         },
         sendMessage() {
                 if (this.newText.trim() != '') {
-                    this.contacts[this.activeUser].messages.push({
+                    this.contacts[this.activeUser].messages.push( {
                         date: this.getCurrentTime(),
                         message: this.newText,
                         status: 'sent'
-                    });
+                    } );
                     this.newText = '';
+                    this.receivingUser = this.activeUser;
                 }
         },
         timeout() {
@@ -194,16 +196,17 @@ createApp({
              },2000);
         },
         answer() {
-            axios.get("https://random-data-api.com/api/v2/beers").then((response) => {
+                axios.get("https://random-data-api.com/api/v2/beers").then((response) => {
                 const beer = response.data
                 this.newResponse = beer.brand + ' it\'s a ' + beer.style + ' and it uses ' + beer.malts + ' malts'
-                this.contacts[this.activeUser].messages.push({
+                this.contacts[this.receivingUser].messages.push({
                     date: this.getCurrentTime(),
                     message: this.newResponse,
                     status: 'received'
                 });
                 this.newText = '';
-            })
+                console.log(this.contacts[this.receivingUser])
+                })     
         },
         searchContact() {
             for (let i = 0; i < this.contacts.length; i++) {
