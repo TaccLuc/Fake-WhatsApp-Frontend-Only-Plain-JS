@@ -181,9 +181,11 @@ createApp({
     methods:{
         changeActiveUser(i) {
             this.activeUser = i;
-            this.unreadMessage = false;
-            this.newMessages = '';
-            this.newText = '';
+            if (this.activeUser == this.receivingUser) {
+                this.unreadMessage = false;
+                this.newMessages = '';
+                this.newText = '';
+            }
         },
         sendMessage() {
                 if (this.newText.trim() != '') {
@@ -200,20 +202,59 @@ createApp({
         timeout() {
             setTimeout(()=>{
                 this.answer()
-             },4000);
+             },2000);
         },
         answer() {
-                axios.get("https://random-data-api.com/api/v2/beers").then((response) => {
-                    const beer = response.data
-                    this.newResponse = beer.brand + ' it\'s a ' + beer.style + ' and it uses ' + beer.malts + ' malts'
+                // axios.get("https://random-data-api.com/api/v2/beers").then((response) => {
+                //     const beer = response.data
+                //     this.newResponse = beer.brand + ' it\'s a ' + beer.style + ' and it uses ' + beer.malts + ' malts'
+                //     this.contacts[this.receivingUser].messages.push({
+                //         date: this.getCurrentTime(),
+                //         message: this.newResponse,
+                //         status: 'received'
+                //     });
+                //     this.newText = '';
+                //     this.contactWriting = false;
+                // })
+                const lastMessage = this.contacts[this.activeUser].messages[this.contacts[this.activeUser].messages.length -1].message.toLowerCase();
+                
+                if(lastMessage.includes("ciao")){
+                    this.newResponse = 'Ciao a te';
+                }
+                else if(lastMessage.includes("come stai?")){
+                    this.newResponse = 'Potrebbe andare meglio, tu?';
+                }
+                else if(lastMessage.includes("anni hai?")){
+                    this.newResponse = 'Quanti me ne dai?';
+                }
+                else if(lastMessage.includes("colore")){
+                    this.newResponse = 'Lightcoral ovviamente';
+                }
+                else if(lastMessage.includes("pizza")){
+                    this.newResponse = 'Preferisco la bagna cauda';
+                }
+                else if(lastMessage.includes("culo")){
+                    this.newResponse = 'Non si dicono parolacce';
+                }
+                else if(lastMessage.includes("barzelletta")){
                     this.contacts[this.receivingUser].messages.push({
+                        date: this.getCurrentTime(),
+                        message: `Sai qual è la differenza fra un elefante e una fragola?`,
+                        status: 'received'
+                    });
+
+                    this.newResponse = `Che l'elefante ha gli orecchioni e la fragola il morbillo.`
+                }
+                else{
+                    this.newResponse = 'Che stai a dì?!'
+                }
+                this.contacts[this.receivingUser].messages.push({
                         date: this.getCurrentTime(),
                         message: this.newResponse,
                         status: 'received'
-                    });
-                    this.newText = '';
-                    this.contactWriting = false;
                 })
+                this.newText = '';
+                this.contactWriting = false;
                 this.unreadMessage = true;
                 this.newMessages++     
         },
