@@ -8,7 +8,9 @@ createApp({
             newSearch: '',
             newResponse: '',
             receivingUser: '',
+            contactWriting: false,
             unreadMessage: false,
+            newMessages: '',
             hour: NaN,
             minutes: NaN,
             contacts: [
@@ -179,6 +181,9 @@ createApp({
     methods:{
         changeActiveUser(i) {
             this.activeUser = i;
+            this.unreadMessage = false;
+            this.newMessages = '';
+            this.newText = '';
         },
         sendMessage() {
                 if (this.newText.trim() != '') {
@@ -189,6 +194,7 @@ createApp({
                     } );
                     this.newText = '';
                     this.receivingUser = this.activeUser;
+                    this.contactWriting = true;
                 }
         },
         timeout() {
@@ -198,16 +204,18 @@ createApp({
         },
         answer() {
                 axios.get("https://random-data-api.com/api/v2/beers").then((response) => {
-                const beer = response.data
-                this.newResponse = beer.brand + ' it\'s a ' + beer.style + ' and it uses ' + beer.malts + ' malts'
-                this.contacts[this.receivingUser].messages.push({
-                    date: this.getCurrentTime(),
-                    message: this.newResponse,
-                    status: 'received'
-                });
-                this.newText = '';
+                    const beer = response.data
+                    this.newResponse = beer.brand + ' it\'s a ' + beer.style + ' and it uses ' + beer.malts + ' malts'
+                    this.contacts[this.receivingUser].messages.push({
+                        date: this.getCurrentTime(),
+                        message: this.newResponse,
+                        status: 'received'
+                    });
+                    this.newText = '';
+                    this.contactWriting = false;
                 })
-                this.unreadMessage = true;        
+                this.unreadMessage = true;
+                this.newMessages++     
         },
         searchContact() {
             for (let i = 0; i < this.contacts.length; i++) {

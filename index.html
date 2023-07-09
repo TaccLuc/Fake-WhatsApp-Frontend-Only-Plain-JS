@@ -90,18 +90,21 @@
                                         <h3>
                                             {{singleContact.name}}
                                         </h3>
-                                        <h4   v-if="contacts[i].messages.length != 0">
+                                        <h4 v-if="contacts[i].messages.length != 0 && !contactWriting || i != receivingUser">
                                             {{contacts[i].messages[contacts[i].messages.length - 1].message}}
                                         </h4>
+                                        <h4 v-else class="waGreen">
+                                            Sta scrivendo...
+                                        </h4>
                                     </div>
-                                    <div class="msgTime"  v-if="contacts[i].messages.length != 0">
+                                    <div class="msgTime" v-if="contacts[i].messages.length != 0">
                                         {{getTime(i, contacts[i].messages.length - 1)}}
                                     </div>
                                 </div>
                             </div>
                             <div class="notification" v-if="unreadMessage && i == receivingUser">
                                 <div>
-                                    1 
+                                    {{newMessages}}
                                 </div>
                             </div>
                         </div>

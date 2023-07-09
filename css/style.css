@@ -172,8 +172,11 @@
 .msgData>h4{
     font-size: 0.8rem;
     margin: 0;
-    color: #727274;
-    
+    color: #727274;  
+}
+
+.msgData>.waGreen{
+    color: #1EA952;
 }
 
 .msgTime{
