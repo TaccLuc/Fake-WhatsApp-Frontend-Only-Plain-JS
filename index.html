@@ -77,7 +77,7 @@
                     <!-- APP BODY -->
                     <div class="appBody">
                         <div v-for="singleContact, i in contacts"
-                        @click="changeActiveUser(i)">
+                        @click="changeActiveUser(i)" class="position-relative">
                             <div class="singleMsg" v-if="singleContact.visible"
                             :class="{
                                 'activeUser': activeUser == i
@@ -97,6 +97,11 @@
                                     <div class="msgTime"  v-if="contacts[i].messages.length != 0">
                                         {{getTime(i, contacts[i].messages.length - 1)}}
                                     </div>
+                                </div>
+                            </div>
+                            <div class="notification" v-if="unreadMessage && i == receivingUser">
+                                <div>
+                                    1 
                                 </div>
                             </div>
                         </div>

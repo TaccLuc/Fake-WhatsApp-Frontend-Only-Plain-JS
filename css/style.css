@@ -214,6 +214,22 @@
     color: black;
 }
 
+.notification{
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    text-align: center;
+}
+
+.notification>div{
+    background-color: #1EA952;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+
 /* 
     MSG SECTION
 */

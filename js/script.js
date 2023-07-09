@@ -8,6 +8,7 @@ createApp({
             newSearch: '',
             newResponse: '',
             receivingUser: '',
+            unreadMessage: false,
             hour: NaN,
             minutes: NaN,
             contacts: [
@@ -193,7 +194,7 @@ createApp({
         timeout() {
             setTimeout(()=>{
                 this.answer()
-             },2000);
+             },4000);
         },
         answer() {
                 axios.get("https://random-data-api.com/api/v2/beers").then((response) => {
@@ -205,7 +206,8 @@ createApp({
                     status: 'received'
                 });
                 this.newText = '';
-                })     
+                })
+                this.unreadMessage = true;        
         },
         searchContact() {
             for (let i = 0; i < this.contacts.length; i++) {
