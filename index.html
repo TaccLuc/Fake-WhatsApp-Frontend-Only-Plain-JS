@@ -148,8 +148,8 @@
                     <!-- MSG BODY -->
                     <div class="msgBody d-flex align-items-center justify-content-center pb-3">
                         <div class="msgBox d-flex flex-column">
-                            <template v-for="singleBubble, i in contacts[activeUser].messages">
                                 <div class="msgBubble position-relative"
+                                v-for="singleBubble, i in contacts[activeUser].messages"
                                 :class="{
                                     'sent': contacts[activeUser].messages[i].status == 'sent',
                                     'received': contacts[activeUser].messages[i].status == 'received',
@@ -174,7 +174,6 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </template>
                         </div>
                     </div>
 
