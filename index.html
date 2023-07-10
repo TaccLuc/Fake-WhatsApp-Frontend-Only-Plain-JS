@@ -148,32 +148,33 @@
                     <!-- MSG BODY -->
                     <div class="msgBody d-flex align-items-center justify-content-center pb-3">
                         <div class="msgBox d-flex flex-column">
-                            <div class="msgBubble position-relative"
-                            v-for="singleBubble, i in contacts[activeUser].messages"
-                            :class="{
-                                'sent': contacts[activeUser].messages[i].status == 'sent',
-                                'received': contacts[activeUser].messages[i].status == 'received',
-                            }">
-                                <div class="bubbleText">
-                                    {{contacts[activeUser].messages[i].message}}
+                            <template v-for="singleBubble, i in contacts[activeUser].messages">
+                                <div class="msgBubble position-relative"
+                                :class="{
+                                    'sent': contacts[activeUser].messages[i].status == 'sent',
+                                    'received': contacts[activeUser].messages[i].status == 'received',
+                                }">
+                                    <div class="bubbleText">
+                                        {{contacts[activeUser].messages[i].message}}
+                                    </div>
+                                    <span class="bubbleTime">
+                                        {{getTime(activeUser, i)}}
+                                    </span>
+                                    <div class="dropdown bubbleDropdown dropdown-center">
+                                        <button class="bubbleButton" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu bubbleDelete">
+                                            <li>
+                                                <a class="dropdown-item"
+                                                @click="deleteMessage(i)">
+                                                    Delete Message
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <span class="bubbleTime">
-                                    {{getTime(activeUser, i)}}
-                                </span>
-                                <div class="dropdown bubbleDropdown dropdown-center">
-                                    <button class="bubbleButton" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu bubbleDelete">
-                                        <li>
-                                            <a class="dropdown-item"
-                                            @click="deleteMessage(i)">
-                                                Delete Message
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            </template>
                         </div>
                     </div>
 
