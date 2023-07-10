@@ -217,9 +217,7 @@ createApp({
                 }
         },
         timeout() {
-            setTimeout(()=>{
-                this.answer()
-             },2000);
+            setTimeout(this.answer,2000);
         },
         answer() {
                 // axios.get("https://random-data-api.com/api/v2/beers").then((response) => {
