@@ -93,7 +93,7 @@
                                         <h4 v-if="contacts[i].messages.length != 0 && !contactWriting || i != receivingUser">
                                             {{contacts[i].messages[contacts[i].messages.length - 1].message}}
                                         </h4>
-                                        <h4 v-else class="waGreen">
+                                        <h4 v-else-if="contactWriting || activeUser != receivingUser" class="waGreen">
                                             Sta scrivendo...
                                         </h4>
                                     </div>
@@ -102,9 +102,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="notification" v-if="!contacts[i].messages[contacts[i].messages.length - 1].read">
-                                <div>
-                                    1
+                            <div v-if="contacts[i].messages.length != 0">
+                                <div class="notification" v-if="!contacts[i].messages[contacts[i].messages.length - 1].read">
+                                    <div>
+                                        1
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -123,8 +125,11 @@
                             <h3>
                                 {{contacts[activeUser].name}}
                             </h3>
-                            <h4 v-if="contacts[activeUser].messages.length != 0">
+                            <h4 v-if="contacts[activeUser].messages.length != 0  && !contactWriting || activeUser != receivingUser">
                                 Ultimo accesso {{getTime(activeUser, contacts[activeUser].messages.length - 1)}}
+                            </h4>
+                            <h4 v-else-if="contactWriting || activeUser != receivingUser" class="waGreen">
+                                Sta scrivendo...
                             </h4>
                         </div>
                         <div class="appIcons">
