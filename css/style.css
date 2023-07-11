@@ -1,18 +1,17 @@
 /* 
     BACKGROUND & STRUCTURE
 */
+
 *{
     user-select: none;
 }
 
 .bgGreenGray{
-    height: 100vh;
-    background: rgb(0,150,136);
     background: linear-gradient(180deg, rgba(0,150,136,1) 20%, rgba(218,219,211,1) 20%);
 }
 
 .windowContainer{
-    height: 95%;
+    height: 95vh;
     width: 70%;
     background-color: white;
 }
@@ -26,13 +25,9 @@
 */
 
 /*  APP HEADER */
+
 .appHeader{
     height: 220px;
-}
-
-.appBody{
-    height: 75%;
-    overflow: auto;
 }
 
 .appUser{
@@ -136,15 +131,21 @@
 
 /* APP BODY */
 
+.appBody{
+    height: calc(95vh - 220px);
+    overflow: auto;
+}
+
 .activeUser{
     background-color: #f3f5f5;
 }
+
 .singleMsg{
     height: 80px;
     padding: 5px;
     border-top: 1px solid #C6C8CA;
     cursor: pointer;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .msgImage{
@@ -185,38 +186,6 @@
     font-size: 0.9rem;
 }
 
-.bubbleDropdown{
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 5px;
-}
-.bubbleButton{
-    background-color: transparent;
-    border: 0px;
-    display: inline;
-    font-size: 0.9rem;
-    color: #727274;
-}
-
-.msgBubble:hover .bubbleDropdown{
-    display: block;
-}
-
-.bubbleDropdown  .bubbleDelete{
-    border: 1px solid #d0d0d3;
-    border-radius: 0;
-    font-size: 0.9rem;
-    height: 50px;
-    padding: 10px 0;
-    cursor: pointer;
-}
-
-.bubbleDropdown  .bubbleDelete a:active{
-    background-color: lightgray;
-    color: black;
-}
-
 .notification{
     position: absolute;
     right: 20px;
@@ -243,6 +212,7 @@
 }
 
 /* MSG HEADER */
+
 .msgHeader{
     height: 70px;
     padding: 5px;
@@ -250,6 +220,7 @@
 }
 
 /* MSG BODY */
+
 .msgBody{
     overflow: auto;
     height: calc(100% - 140px);
@@ -295,7 +266,41 @@
     color: #97979e;
 }
 
+.bubbleDropdown{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+
+.bubbleButton{
+    background-color: transparent;
+    border: 0px;
+    display: inline;
+    font-size: 0.9rem;
+    color: #727274;
+}
+
+.msgBubble:hover .bubbleDropdown{
+    display: block;
+}
+
+.bubbleDropdown  .bubbleDelete{
+    border: 1px solid #d0d0d3;
+    border-radius: 0;
+    font-size: 0.9rem;
+    height: 50px;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.bubbleDropdown  .bubbleDelete a:active{
+    background-color: lightgray;
+    color: black;
+}
+
 /* MSG FOOTER */
+
 .msgFooter{
     height: 70px;
 }
