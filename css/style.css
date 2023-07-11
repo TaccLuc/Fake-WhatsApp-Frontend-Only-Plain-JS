@@ -59,6 +59,7 @@
     font-size: 1.2rem;
     padding-right: 10px;
 }
+
 .appIcons>span{
     padding: 0 10px;
 }
@@ -165,18 +166,19 @@
     margin-top: 5px;
     overflow: hidden;
 }
+
 .msgData>h3{
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
-.msgData>h4{
+.msgData h4{
     font-size: 0.8rem;
     margin: 0;
     color: #727274;  
 }
 
-.msgData>.waGreen{
+.msgData .waGreen{
     color: #1EA952;
 }
 

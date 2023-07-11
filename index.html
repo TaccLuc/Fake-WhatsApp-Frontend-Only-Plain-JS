@@ -90,12 +90,14 @@
                                         <h3>
                                             {{singleContact.name}}
                                         </h3>
-                                        <h4 v-if="contacts[i].messages.length != 0 && !contactWriting || i != receivingUser">
-                                            {{contacts[i].messages[contacts[i].messages.length - 1].message}}
-                                        </h4>
-                                        <h4 v-else-if="contactWriting || activeUser != receivingUser" class="waGreen">
-                                            Sta scrivendo...
-                                        </h4>
+                                        <div v-if="contacts[i].messages.length != 0">
+                                            <h4 v-if="!contactWriting || i != receivingUser">
+                                                {{contacts[i].messages[contacts[i].messages.length - 1].message}}
+                                            </h4>
+                                            <h4 v-else-if="contactWriting || activeUser != receivingUser" class="waGreen">
+                                                Sta scrivendo...
+                                            </h4>
+                                        </div>
                                     </div>
                                     <div class="msgTime" v-if="contacts[i].messages.length != 0">
                                         {{getTime(i, contacts[i].messages.length - 1)}}
@@ -125,12 +127,14 @@
                             <h3>
                                 {{contacts[activeUser].name}}
                             </h3>
-                            <h4 v-if="contacts[activeUser].messages.length != 0  && !contactWriting || activeUser != receivingUser">
-                                Ultimo accesso {{getTime(activeUser, contacts[activeUser].messages.length - 1)}}
-                            </h4>
-                            <h4 v-else-if="contactWriting || activeUser != receivingUser" class="waGreen">
-                                Sta scrivendo...
-                            </h4>
+                            <div v-if="contacts[activeUser].messages.length != 0">
+                                <h4 v-if="!contactWriting || activeUser != receivingUser">
+                                    Ultimo accesso {{getTime(activeUser, contacts[activeUser].messages.length - 1)}}
+                                </h4>
+                                <h4 v-else-if="contactWriting || activeUser != receivingUser" class="waGreen">
+                                    Sta scrivendo...
+                                </h4>
+                            </div>
                         </div>
                         <div class="appIcons">
                             <span>

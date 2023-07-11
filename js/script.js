@@ -201,7 +201,9 @@ createApp({
         changeActiveUser(i) {
             this.activeUser = i;
             this.newText = '';
-            this.contacts[this.activeUser].messages[this.contacts[this.activeUser].messages.length - 1].read = true;
+            if (this.contacts[this.activeUser].messages.length != 0) {
+                this.contacts[this.activeUser].messages[this.contacts[this.activeUser].messages.length - 1].read = true;
+            }
         },
         sendMessage() {
                 if (this.newText.trim() != '') {
